@@ -180,7 +180,7 @@ void PercorrerMatriz(){
         else if(coluna > 0 && coluna < TAM-1){ //olhando quando estou nao estou nas colunas das extremidades
             if(linha < TAM-1 && linha != 0){ //olhando quando nao estou tmb nas linhas das extremidades, estou no meio
                 cout << "\naaaaaa" << endl;
-                if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha][coluna-1] && matriz[linha+1][coluna] >= matriz[linha-1][coluna] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //estaria descendo
+                if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha][coluna-1] &&  matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //estaria descendo
                     soma += matriz[linha+1][coluna];
                     matriz[linha][coluna] = -1;
                     linha++;
@@ -188,23 +188,17 @@ void PercorrerMatriz(){
                     //linha = 5; 
                     //coluna = 5;
                 }
-                else if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){//estaria indo a direeita
+                else if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){//estaria indo a direita
                     soma += matriz[linha][coluna+1];
                     matriz[linha][coluna] = -1;
                     coluna++;
                     cout << "\nccccc" << endl;
                 }
-                else if(matriz[linha][coluna-1] >= matriz[linha][coluna+1] && matriz[linha][coluna-1] >= matriz[linha+1][coluna] && matriz[linha][coluna-1] >= matriz[linha-1][coluna] && matriz[linha][coluna-1] >= matriz[linha+1][coluna+1]){//estaria indo a esquerda
+                else if(matriz[linha][coluna-1] >= matriz[linha][coluna+1] && matriz[linha][coluna-1] >= matriz[linha+1][coluna] && matriz[linha][coluna-1] >= matriz[linha+1][coluna+1]){//estaria indo a esquerda
                     soma += matriz[linha][coluna-1];
                     matriz[linha][coluna] = -1;
                     coluna--;
                     cout << "\nddddd" << endl;
-                }
-                else if(matriz[linha-1][coluna] >= matriz[linha+1][coluna] && matriz[linha-1][coluna] >= matriz[linha][coluna+1] && matriz[linha-1][coluna] >= matriz[linha][coluna-1] && matriz[linha-1][coluna] >= matriz[linha+1][coluna+1]){ //estaria subindo
-                    soma += matriz[linha-1][coluna];
-                    matriz[linha][coluna] = -1;
-                    linha--;
-                    cout << "\neee" << endl;
                 }
                 else{ //estaria indo na diagonal
                     soma += matriz[linha+1][coluna+1];
@@ -215,7 +209,11 @@ void PercorrerMatriz(){
                 }
             }
             else if(linha == TAM-1){ //estaria na ultima linha
-                if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna]){ //andarei para a dreita
+                //So posso ir pra frente
+                soma += matriz[linha][coluna+1];
+                matriz[linha][coluna] = -1;
+                coluna++;
+                /*if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna]){ //andarei para a dreita
                     soma += matriz[linha][coluna+1];
                     matriz[linha][coluna] = -1;
                     coluna++;
@@ -229,17 +227,23 @@ void PercorrerMatriz(){
                     soma += matriz[linha][coluna-1];
                     matriz[linha][coluna] = -1;
                     coluna--;
-                }
+                }*/
             }
             else{ // vendo na linha 0
-                if(matriz[linha+1][coluna] >= matriz[linha][coluna-1] && matriz[linha+1][coluna] >= matriz[linha][coluna+1]){ //estaria indo para baixo
+                if(matriz[linha+1][coluna] >= matriz[linha][coluna-1] && matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //estaria indo para baixo
                     soma += matriz[linha+1][coluna];
                     matriz[linha][coluna] = -1;
                     linha++;
                 }
-                else if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha+1][coluna]){ //estaria indo para a direita
+                else if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){ //estaria indo para a direita
                     soma += matriz[linha][coluna+1];
                     matriz[linha][coluna] = -1;
+                    coluna++;
+                }
+                else if(matriz[linha+1][coluna+1] >= matriz[linha+1][coluna] && matriz[linha+1][coluna+1] >= matriz[linha][coluna+1] && matriz[linha+1][coluna+1] >= matriz[linha][coluna-1]){ //estaria indo para a diagonal
+                    soma += matriz[linha+1][coluna+1];
+                    matriz[linha][coluna] = -1;
+                    linha++;
                     coluna++;
                 }
                 else{ //estaria indo para a esquerda
@@ -252,20 +256,15 @@ void PercorrerMatriz(){
             ImprimirMatriz();
         }
         else if(coluna == 0 && linha < TAM-1){ 
-            if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha-1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){ // andei para o lado direito
+            if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){ // andei para o lado direito
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
                 coluna++;
             }
-            else if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha-1][coluna] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //andei para baixo*********
+            else if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //andei para baixo
                 soma += matriz[linha+1][coluna];
                 matriz[linha][coluna] = -1;
                 linha++;
-            }
-            else if(matriz[linha-1][coluna] >= matriz[linha+1][coluna] && matriz[linha-1][coluna] >= matriz[linha][coluna+1] && matriz[linha-1][coluna] >= matriz[linha+1][coluna+1]){ //estaria subindo
-                soma += matriz[linha-1][coluna];
-                matriz[linha][coluna] = -1;
-                linha--;
             }
             else{ //andei na diagonal
                 soma += matriz[linha+1][coluna+1];
@@ -275,20 +274,14 @@ void PercorrerMatriz(){
             }
             ImprimirMatriz();
         }
-        else if(linha == TAM-1){
-            if(coluna == 0){
-                if(matriz[linha-1][coluna] >= matriz[linha][coluna+1]){ //estaria subindo
-                    soma += matriz[linha-1][coluna];
-                    matriz[linha][coluna] = -1;
-                    linha--;
-                }
-                else{ //estaria indo para direita
-                    soma += matriz[linha][coluna+1];
-                    matriz[linha][coluna]  = -1;
-                    coluna++;
-                }
+        else if(linha == TAM-1){//estiver na ultima linha
+            if(coluna == 0){ 
+                //so posso ir para a direita
+                soma += matriz[linha][coluna+1];
+                matriz[linha][coluna]  = -1;
+                coluna++;
             }
-            else if(coluna != TAM-1){
+            /*else if(coluna != TAM-1){//ja tratei quando estier na ultima linha e sem estar nem na utima e na primeria coluna
                 if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna]){ //andarei para a direita
                     soma += matriz[linha][coluna+1];
                     matriz[linha][coluna] = -1;
@@ -304,7 +297,7 @@ void PercorrerMatriz(){
                     matriz[linha][coluna] = -1;
                     linha--;
                 }
-            }
+            }*/
             else{
                 printf("\nVOCE CHEGOU AO FINAL!!\n");
                 matriz[linha][coluna] = -1;
@@ -316,32 +309,21 @@ void PercorrerMatriz(){
         else if(coluna == TAM -1){
             if(linha != TAM-1){
                 if(linha == 0){
-                    if(matriz[linha][coluna-1] >= matriz[linha+1][coluna]){
-                        soma += matriz[linha][coluna-1];
-                        matriz[linha][coluna] = -1;
-                        coluna--;
-                    }
-                    else{
-                        soma += matriz[linha+1][coluna];
-                        matriz[linha][coluna] = -1;
-                        linha++;
-                    }
+                    //so posso descer
+                    soma += matriz[linha+1][coluna];
+                    matriz[linha][coluna] = -1;
+                    linha++;
                 }
                 else if(linha != 0){
-                    if(matriz[linha][coluna-1] >= matriz[linha+1][coluna] && matriz[linha][coluna-1] >= matriz[linha-1][coluna]){ //andarei para a esquerda
+                    if(matriz[linha][coluna-1] >= matriz[linha+1][coluna]){ //andarei para a esquerda
                         soma += matriz[linha][coluna-1];
                         matriz[linha][coluna] = -1;
                         coluna--;
                     }
-                    else if(matriz[linha+1][coluna] >= matriz[linha-1][coluna] && matriz[linha+1][coluna] >= matriz[linha][coluna-1]){ //andarei para baixo
+                    else{ //andarei para baixo
                         soma += matriz[linha+1][coluna];
                         matriz[linha][coluna] = -1;
                         linha++;
-                    }
-                    else{ // andarei para cima
-                        soma += matriz[linha-1][coluna];
-                        matriz[linha][coluna] = -1;
-                        linha--;
                     }
                 }
             }
