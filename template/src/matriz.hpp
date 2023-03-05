@@ -1,13 +1,14 @@
 #ifndef MATRIZ_HPP__
 #define MATRIZ_HPP__
+
 #include<iostream>
 #include<fstream>
-#include <sstream>
-#include <cstring>
+#include<sstream>
+#include<cstring>
 #include<stdbool.h>
 #include<ctime>
 #include<cstdlib>
-#include<windows.h>
+#include<unistd.h>
 #define TAM 4
 
 using namespace std;

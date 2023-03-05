@@ -4,10 +4,8 @@ using namespace std;
 int matriz[TAM][TAM], linha = 0, coluna= 0, soma=0;
 
 void GeraMatrizAleatorio(int matriz[TAM][TAM]){
-
-    Sleep(1000);
+    sleep(1);
     srand(time(nullptr));
-
     for(int i = 0; i < TAM; i++){
         for(int j = 0; j < TAM; j++){
             matriz[i][j] = rand() %100; 
@@ -20,9 +18,7 @@ void ColocandoMatriz(){
     ofstream arquivo;
     int a = 0;
     int quantidadeMatrizes=3;
-
     srand(time(NULL));
-
     //quantidadeMatrizes = rand() %5 +1;
     //cout << quantidadeMatrizes <<endl;
 
@@ -67,18 +63,15 @@ void ColocandoMatriz(){
 void LerArquivo(){
     ifstream arquivo;
     string linha_arq, elemento;
-    int i = 0, cont=0 ;
+    //int i = 0, cont=0 ;
     int aux_linha=0, aux_coluna=0;
     string matriz_aux[TAM][TAM];
-
-    cout << "\nhhhhh" << endl;
     
     arquivo.open("matriz.txt", ios::in);
 
     while(!arquivo.eof()){
         while(getline(arquivo, linha_arq, '\n')){
             if(linha_arq.empty()){
-                cout << "\nlele" << endl;
                 for(int i=0; i<TAM; i++){
                     for(int j=0; j<TAM; j++){
                         matriz[i][j] = atoi(matriz_aux[i][j].c_str());
@@ -93,7 +86,6 @@ void LerArquivo(){
                 soma = 0;
                 linha = 0;
                 coluna = 0;
-                cout << "\nhahaha" << endl;
             }
             else{
                 //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
@@ -109,8 +101,6 @@ void LerArquivo(){
                     aux_linha++;
                     aux_coluna=0;
                 }
-
-                cout << "\nbjj" << endl;
             }
         }
     }
@@ -140,6 +130,7 @@ void LerArquivo(){
 
 void ImprimirMatriz(){
 
+    cout << endl;
     for (int i = 0; i <TAM; i++) {
         for (int j = 0; j < TAM; j++) {
             cout << matriz[i][j] << " ";
@@ -151,14 +142,14 @@ void ImprimirMatriz(){
 }
 
 void PercorrerMatriz(){
-    int maiorValor = 0;
+    //int maiorValor = 0;
     soma += matriz[linha][coluna];
 
     while(linha < TAM && coluna < TAM){
         cout << "\nLINHA: " << linha;
         cout << "\nCOLUNA: " << coluna << endl;
 
-        if(linha == 0 & coluna == 0){
+        if((linha == 0) && (coluna == 0)){
             //olho se é o que esta abaixo da posicao [0][0] é o maior e atualizo os passos
             if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){
                 soma += matriz[linha+1][coluna];
@@ -213,21 +204,6 @@ void PercorrerMatriz(){
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
                 coluna++;
-                /*if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna]){ //andarei para a dreita
-                    soma += matriz[linha][coluna+1];
-                    matriz[linha][coluna] = -1;
-                    coluna++;
-                }
-                else if(matriz[linha-1][coluna] >= matriz[linha][coluna+1] && matriz[linha-1][coluna] >= matriz[linha][coluna-1]){ // andarei para cima
-                    soma += matriz[linha-1][coluna];
-                    matriz[linha][coluna] = -1;
-                    linha--;
-                }
-                else{ // andarei para a esquerda
-                    soma += matriz[linha][coluna-1];
-                    matriz[linha][coluna] = -1;
-                    coluna--;
-                }*/
             }
             else{ // vendo na linha 0
                 if(matriz[linha+1][coluna] >= matriz[linha][coluna-1] && matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //estaria indo para baixo
@@ -281,23 +257,6 @@ void PercorrerMatriz(){
                 matriz[linha][coluna]  = -1;
                 coluna++;
             }
-            /*else if(coluna != TAM-1){//ja tratei quando estier na ultima linha e sem estar nem na utima e na primeria coluna
-                if(matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha-1][coluna]){ //andarei para a direita
-                    soma += matriz[linha][coluna+1];
-                    matriz[linha][coluna] = -1;
-                    coluna++;
-                }
-                else if(matriz[linha][coluna-1] >= matriz[linha-1][coluna] && matriz[linha][coluna-1] >= matriz[linha][coluna+1]){ // andarei para a esquerda
-                    soma += matriz[linha][coluna-1];
-                    matriz[linha][coluna] = -1;
-                    coluna--;
-                }
-                else{ // andarei para cima
-                    soma += matriz[linha-1][coluna];
-                    matriz[linha][coluna] = -1;
-                    linha--;
-                }
-            }*/
             else{
                 printf("\nVOCE CHEGOU AO FINAL!!\n");
                 matriz[linha][coluna] = -1;
