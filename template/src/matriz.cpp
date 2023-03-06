@@ -17,19 +17,20 @@ void GeraMatrizAleatorio(int matriz[TAM][TAM]){
 void ColocandoMatriz(){
     ofstream arquivo;
     int a = 0;
-    int quantidadeMatrizes=3;
+    int quantidadeMatrizes=0;
     srand(time(NULL));
-    //quantidadeMatrizes = rand() %5 +1;
-    //cout << quantidadeMatrizes <<endl;
+    quantidadeMatrizes = rand() %5 +1;
+    cout << "\n--Quantidade de matrizes geradas:" << quantidadeMatrizes << "--" << endl;
 
     arquivo.open("matriz.txt");
     if(!arquivo){
         cout << "\nFALHA NA ABERTURA DO ARQUIVO" << endl;
     }
     else{
+        arquivo << TAM << "x" << TAM << endl;
         while(quantidadeMatrizes>0){
             GeraMatrizAleatorio(matriz);
-            
+
             for(int i=0; i<TAM; i++){
                 for(int j=0; j<TAM; j++){
                     if(a<TAM){
@@ -56,45 +57,50 @@ void ColocandoMatriz(){
 void LerArquivo(){
     ifstream arquivo;
     string linha_arq, elemento;
-    int aux_linha=0, aux_coluna=0;
+    int aux_linha=0, aux_coluna=0, aux_tam=0;
     string matriz_aux[TAM][TAM];
     
     arquivo.open("matriz.txt", ios::in);
 
     while(!arquivo.eof()){
         while(getline(arquivo, linha_arq, '\n')){
-            if(linha_arq.empty()){
-                for(int i=0; i<TAM; i++){
-                    for(int j=0; j<TAM; j++){
-                        matriz[i][j] = atoi(matriz_aux[i][j].c_str());
-                    }
-                }
-                cout << "\n---Nova Matriz---" << endl;
-                ImprimirMatriz();
-                PercorrerMatriz();
-                memset(matriz_aux, 0, sizeof(matriz_aux));
-                matriz[TAM][TAM] = {0};
-                aux_coluna = 0;
-                aux_linha = 0;
-                soma = 0;
-                linha = 0;
-                coluna = 0;
+            if(aux_tam==0){
+                aux_tam++;
             }
             else{
-                //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
-                stringstream aux(linha_arq);
-
-                //lendo a cada elemento presente na minha linha armazena para minha variavel elemento e tendo o delimitador ''
-                while(getline(aux, elemento, ' ')){
-                    matriz_aux[aux_linha][aux_coluna] = elemento;
-                    aux_coluna++;
+                if(linha_arq.empty()){
+                    for(int i=0; i<TAM; i++){
+                        for(int j=0; j<TAM; j++){
+                            matriz[i][j] = atoi(matriz_aux[i][j].c_str());
+                        }
+                    }
+                    cout << "\n---Nova Matriz---" << endl;
+                    ImprimirMatriz();
+                    PercorrerMatriz();
+                    memset(matriz_aux, 0, sizeof(matriz_aux));
+                    matriz[TAM][TAM] = {0};
+                    aux_coluna = 0;
+                    aux_linha = 0;
+                    soma = 0;
+                    linha = 0;
+                    coluna = 0;
                 }
+                else{
+                    //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
+                    stringstream aux(linha_arq);
 
-                if(aux_coluna>0){
-                    aux_linha++;
-                    aux_coluna=0;
+                    //lendo a cada elemento presente na minha linha armazena para minha variavel elemento e tendo o delimitador ''
+                    while(getline(aux, elemento, ' ')){
+                        matriz_aux[aux_linha][aux_coluna] = elemento;
+                        aux_coluna++;
+                    }
+
+                    if(aux_coluna>0){
+                        aux_linha++;
+                        aux_coluna=0;
+                    }
                 }
-            }
+            }    
         }
     }
     arquivo.close();  
