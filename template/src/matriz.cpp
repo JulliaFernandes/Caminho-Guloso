@@ -22,13 +22,6 @@ void ColocandoMatriz(){
     //quantidadeMatrizes = rand() %5 +1;
     //cout << quantidadeMatrizes <<endl;
 
-    /*int matriz1[4][4]={37,14,98,13,
-                    50,20,99,6,
-                    33,2,48,45,
-                    57,25,85,10};*/
-
-   
-
     arquivo.open("matriz.txt");
     if(!arquivo){
         cout << "\nFALHA NA ABERTURA DO ARQUIVO" << endl;
@@ -63,7 +56,6 @@ void ColocandoMatriz(){
 void LerArquivo(){
     ifstream arquivo;
     string linha_arq, elemento;
-    //int i = 0, cont=0 ;
     int aux_linha=0, aux_coluna=0;
     string matriz_aux[TAM][TAM];
     
@@ -77,6 +69,7 @@ void LerArquivo(){
                         matriz[i][j] = atoi(matriz_aux[i][j].c_str());
                     }
                 }
+                cout << "\n---Nova Matriz---" << endl;
                 ImprimirMatriz();
                 PercorrerMatriz();
                 memset(matriz_aux, 0, sizeof(matriz_aux));
@@ -105,24 +98,13 @@ void LerArquivo(){
         }
     }
     arquivo.close();  
-    
-
-    /*for (int i = 0; i < aux_linha; i++) {
-        for (int j = 0; j < TAM; j++) {
-            if (!matriz_aux[i][j].empty()) {
-                cout << matriz_aux[i][j] << " ";
-            } else {
-                break;
-            }
-        }
-        cout << endl;
-    }*/
 
     for(int i=0; i<TAM; i++){
         for(int j=0; j<TAM; j++){
             matriz[i][j] = atoi(matriz_aux[i][j].c_str());
         }
     }
+    cout << "\n---Nova Matriz---" << endl;
     ImprimirMatriz();
     PercorrerMatriz();
 
@@ -137,12 +119,10 @@ void ImprimirMatriz(){
         }
         cout << endl;
     }
-
     cout << "VALOR DA SOMA: " << soma << endl;
 }
 
 void PercorrerMatriz(){
-    //int maiorValor = 0;
     soma += matriz[linha][coluna];
 
     while(linha < TAM && coluna < TAM){
@@ -167,36 +147,31 @@ void PercorrerMatriz(){
                 matriz[linha][coluna] = -1;
                 coluna++;
             }
+            ImprimirMatriz();
         }
         else if(coluna > 0 && coluna < TAM-1){ //olhando quando estou nao estou nas colunas das extremidades
             if(linha < TAM-1 && linha != 0){ //olhando quando nao estou tmb nas linhas das extremidades, estou no meio
-                cout << "\naaaaaa" << endl;
                 if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha][coluna-1] &&  matriz[linha+1][coluna] >= matriz[linha+1][coluna+1]){ //estaria descendo
                     soma += matriz[linha+1][coluna];
                     matriz[linha][coluna] = -1;
                     linha++;
-                    cout << "\nbbbb" << endl;
-                    //linha = 5; 
-                    //coluna = 5;
                 }
                 else if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha][coluna-1] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){//estaria indo a direita
                     soma += matriz[linha][coluna+1];
                     matriz[linha][coluna] = -1;
                     coluna++;
-                    cout << "\nccccc" << endl;
                 }
                 else if(matriz[linha][coluna-1] >= matriz[linha][coluna+1] && matriz[linha][coluna-1] >= matriz[linha+1][coluna] && matriz[linha][coluna-1] >= matriz[linha+1][coluna+1]){//estaria indo a esquerda
                     soma += matriz[linha][coluna-1];
                     matriz[linha][coluna] = -1;
                     coluna--;
-                    cout << "\nddddd" << endl;
                 }
                 else{ //estaria indo na diagonal
                     soma += matriz[linha+1][coluna+1];
                     matriz[linha][coluna] = -1;
                     linha++;
                     coluna++;
-                    cout << "\nfff" << endl;
+                    //cout << "\nfff" << endl;
                 }
             }
             else if(linha == TAM-1){ //estaria na ultima linha
@@ -251,14 +226,13 @@ void PercorrerMatriz(){
             ImprimirMatriz();
         }
         else if(linha == TAM-1){//estiver na ultima linha
-            if(coluna == 0){ 
-                //so posso ir para a direita
+            if(coluna == 0){ //so posso ir para a direita
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna]  = -1;
                 coluna++;
             }
             else{
-                printf("\nVOCE CHEGOU AO FINAL!!\n");
+                printf("\nVOCE CHEGOU AO FINAL!!");
                 matriz[linha][coluna] = -1;
                 linha++;
                 coluna++;
@@ -267,8 +241,7 @@ void PercorrerMatriz(){
         }
         else if(coluna == TAM -1){
             if(linha != TAM-1){
-                if(linha == 0){
-                    //so posso descer
+                if(linha == 0){//so posso descer
                     soma += matriz[linha+1][coluna];
                     matriz[linha][coluna] = -1;
                     linha++;
@@ -285,9 +258,6 @@ void PercorrerMatriz(){
                         linha++;
                     }
                 }
-            }
-            else{
-                printf("\nVoce chegou ao final da matriz\n");
             }
             ImprimirMatriz();
         }
