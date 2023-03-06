@@ -1,6 +1,6 @@
 # Caminho-Guloso
 
-Atividade feita para a disciplina de Algoritmos e Estrutura de Dados.
+Atividade realizada no 3º perido para a disciplina de Algoritmos e Estrutura de Dados.
 
 <strong>Instruções para a realização da atividade:</strong>
 
