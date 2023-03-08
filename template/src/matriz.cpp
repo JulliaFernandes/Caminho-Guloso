@@ -1,9 +1,18 @@
 #include"matriz.hpp"
 using namespace std;
 
-int matriz[TAM][TAM], linha = 0, coluna= 0, soma=0;
+int soma=0;
 
-void GeraMatrizAleatorio(int matriz[TAM][TAM]){
+
+void TamanhoMatriz::setTam_max(int _tam){
+    this->tam_max =  _tam;
+}
+
+int TamanhoMatriz :: getTam_max(){
+    return tam_max;
+}
+
+/*void GeraMatrizAleatorio(int matriz[TAM][TAM]){
     sleep(1);
     srand(time(nullptr));
     for(int i = 0; i < TAM; i++){
@@ -11,10 +20,50 @@ void GeraMatrizAleatorio(int matriz[TAM][TAM]){
             matriz[i][j] = rand() %100; 
         }
     }
-    
+}*/
+
+int LePrimeraLinha(){
+    ifstream arquivo;
+    string linha, valor_str, aux_str, elemento;
+    int aux=0, tam=0;
+
+    arquivo.open("matriz.txt", ios::in);
+    while (!arquivo.eof()){
+        while(getline(arquivo, linha, '\n')){
+            stringstream aux_str(linha);
+            while(getline(aux_str, elemento, ' ')){
+                if(aux == 0){
+                    valor_str = elemento;
+                    tam = atoi(valor_str.c_str());
+                    //cout << tam << endl;
+                    
+                    aux++;
+                }
+            }
+            
+    }
+    arquivo.close();
+    }
+    return tam;
 }
 
-void ColocandoMatriz(){
+int ContaQtdMatriz(){
+    ifstream arquivo;
+    string linha;
+    int aux=0;
+
+    arquivo.open("matriz.txt", ios::in);
+    while (!arquivo.eof()){
+        while(getline(arquivo, linha, '\n')){
+            if(linha.empty()){
+                aux++;
+            }   
+    }
+    arquivo.close();
+    }
+    return aux;
+}
+/*void ColocandoMatriz(){
     ofstream arquivo;
     int a = 0;
     int quantidadeMatrizes=0;
@@ -52,13 +101,17 @@ void ColocandoMatriz(){
         
     }
     arquivo.close();
-}
+}*/
 
-void LerArquivo(){
+void LerArquivo(int **matriz, int tam_matriz){
     ifstream arquivo;
     string linha_arq, elemento;
-    int aux_linha=0, aux_coluna=0, aux_tam=0;
-    string matriz_aux[TAM][TAM];
+    int aux_linha=0, aux_coluna=0, aux_tam=0, linha=0, coluna=0;
+    //string **matriz_aux;
+    string **matriz_aux=new string*[tam_matriz];
+    for(int i = 0; i < tam_matriz; i++){
+        matriz_aux[i]=new string[tam_matriz];
+    }
     
     arquivo.open("matriz.txt", ios::in);
 
@@ -69,15 +122,15 @@ void LerArquivo(){
             }
             else{
                 if(linha_arq.empty()){
-                    for(int i=0; i<TAM; i++){
-                        for(int j=0; j<TAM; j++){
+                    for(int i=0; i<tam_matriz; i++){
+                        for(int j=0; j<tam_matriz; j++){
                             matriz[i][j] = atoi(matriz_aux[i][j].c_str());
                         }
                     }
                     cout << "\n---Nova Matriz---" << endl;
-                    ImprimirMatriz();
-                    PercorrerMatriz();
-                    memset(matriz_aux, 0, sizeof(matriz_aux));
+                    ImprimirMatriz(matriz, tam_matriz);
+                    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
+                    //memset(matriz_aux, 0, sizeof(matriz_aux));
                     matriz[TAM][TAM] = {0};
                     aux_coluna = 0;
                     aux_linha = 0;
@@ -105,22 +158,20 @@ void LerArquivo(){
     }
     arquivo.close();  
 
-    for(int i=0; i<TAM; i++){
-        for(int j=0; j<TAM; j++){
+    for(int i=0; i<tam_matriz; i++){
+        for(int j=0; j<tam_matriz; j++){
             matriz[i][j] = atoi(matriz_aux[i][j].c_str());
         }
     }
-    cout << "\n---Nova Matriz---" << endl;
-    ImprimirMatriz();
-    PercorrerMatriz();
-
+    cout << "\naa---Nova Matriz---" << endl;
+    ImprimirMatriz(matriz, tam_matriz);
+    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
 }
 
-void ImprimirMatriz(){
-
+void ImprimirMatriz(int **matriz, int tam_matriz){
     cout << endl;
-    for (int i = 0; i <TAM; i++) {
-        for (int j = 0; j < TAM; j++) {
+    for (int i=0; i<tam_matriz; i++) {
+        for (int j=0; j<tam_matriz; j++) {
             cout << matriz[i][j] << " ";
         }
         cout << endl;
@@ -128,10 +179,10 @@ void ImprimirMatriz(){
     cout << "VALOR DA SOMA: " << soma << endl;
 }
 
-void PercorrerMatriz(){
+void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
     soma += matriz[linha][coluna];
 
-    while(linha < TAM && coluna < TAM){
+    while(linha < tam_matriz && coluna < tam_matriz){
         cout << "\nLINHA: " << linha;
         cout << "\nCOLUNA: " << coluna << endl;
 
@@ -153,10 +204,10 @@ void PercorrerMatriz(){
                 matriz[linha][coluna] = -1;
                 coluna++;
             }
-            ImprimirMatriz();
+            ImprimirMatriz(matriz, tam_matriz);
         }
-        else if(coluna > 0 && coluna < TAM-1){ //olhando quando estou nao estou nas colunas das extremidades
-            if(linha < TAM-1 && linha != 0){ //olhando quando nao estou tmb nas linhas das extremidades, estou no meio
+        else if(coluna > 0 && coluna < tam_matriz-1){ //olhando quando estou nao estou nas colunas das extremidades
+            if(linha < tam_matriz-1 && linha != 0){ //olhando quando nao estou tmb nas linhas das extremidades, estou no meio
                 if(matriz[linha+1][coluna] >= matriz[linha][coluna+1] && matriz[linha+1][coluna] >= matriz[linha][coluna-1] &&  matriz[linha+1][coluna] >= matriz[linha+1][coluna+1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna-1]){ //estaria descendo
                     soma += matriz[linha+1][coluna];
                     matriz[linha][coluna] = -1;
@@ -186,7 +237,7 @@ void PercorrerMatriz(){
                     //cout << "\nfff" << endl;
                 }
             }
-            else if(linha == TAM-1){ //estaria na ultima linha
+            else if(linha == tam_matriz-1){ //estaria na ultima linha
                 //So posso ir pra frente
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
@@ -222,9 +273,9 @@ void PercorrerMatriz(){
                 }
 
             }
-            ImprimirMatriz();
+            ImprimirMatriz(matriz, tam_matriz);
         }
-        else if(coluna == 0 && linha < TAM-1){ 
+        else if(coluna == 0 && linha < tam_matriz-1){ 
             if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){ // andei para o lado direito
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
@@ -241,9 +292,9 @@ void PercorrerMatriz(){
                 linha++;
                 coluna++;
             }
-            ImprimirMatriz();
+            ImprimirMatriz(matriz, tam_matriz);
         }
-        else if(linha == TAM-1){//estiver na ultima linha
+        else if(linha == tam_matriz-1){//estiver na ultima linha
             if(coluna == 0){ //so posso ir para a direita
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna]  = -1;
@@ -255,10 +306,10 @@ void PercorrerMatriz(){
                 linha++;
                 coluna++;
             }
-            ImprimirMatriz();
+            ImprimirMatriz(matriz, tam_matriz);
         }
-        else if(coluna == TAM -1){
-            if(linha != TAM-1){
+        else if(coluna == tam_matriz -1){
+            if(linha != tam_matriz-1){
                 if(linha == 0){
                     if(matriz[linha+1][coluna] >= matriz[linha+1][coluna-1]){ //estaria descendo
                         soma += matriz[linha+1][coluna];
@@ -291,7 +342,7 @@ void PercorrerMatriz(){
                     }
                 }
             }
-            ImprimirMatriz();
+            ImprimirMatriz(matriz, tam_matriz);
         }
     }
 }
