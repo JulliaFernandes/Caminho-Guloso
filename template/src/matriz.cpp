@@ -1,33 +1,16 @@
 #include"matriz.hpp"
+#include<string>
+
 using namespace std;
 
 int soma=0;
-
-
-void TamanhoMatriz::setTam_max(int _tam){
-    this->tam_max =  _tam;
-}
-
-int TamanhoMatriz :: getTam_max(){
-    return tam_max;
-}
-
-/*void GeraMatrizAleatorio(int matriz[TAM][TAM]){
-    sleep(1);
-    srand(time(nullptr));
-    for(int i = 0; i < TAM; i++){
-        for(int j = 0; j < TAM; j++){
-            matriz[i][j] = rand() %100; 
-        }
-    }
-}*/
 
 int LePrimeraLinha(){
     ifstream arquivo;
     string linha, valor_str, aux_str, elemento;
     int aux=0, tam=0;
 
-    arquivo.open("matriz.txt", ios::in);
+    arquivo.open("dataset/input.data", ios::in);
     while (!arquivo.eof()){
         while(getline(arquivo, linha, '\n')){
             stringstream aux_str(linha);
@@ -35,85 +18,81 @@ int LePrimeraLinha(){
                 if(aux == 0){
                     valor_str = elemento;
                     tam = atoi(valor_str.c_str());
-                    //cout << tam << endl;
-                    
                     aux++;
                 }
             }
-            
+        }
     }
     arquivo.close();
-    }
     return tam;
 }
 
 int ContaQtdMatriz(){
-    ifstream arquivo;
+    ifstream arquivo("dataset/input.data");
+    int contEspacos = 0;
     string linha;
-    int aux=0;
-
-    arquivo.open("matriz.txt", ios::in);
-    while (!arquivo.eof()){
-        while(getline(arquivo, linha, '\n')){
-            if(linha.empty()){
-                aux++;
-            }   
-    }
-    arquivo.close();
-    }
-    return aux;
-}
-/*void ColocandoMatriz(){
-    ofstream arquivo;
-    int a = 0;
-    int quantidadeMatrizes=0;
-    srand(time(NULL));
-    quantidadeMatrizes = rand() %5 +1;
-    cout << "\n--Quantidade de matrizes geradas:" << quantidadeMatrizes << "--" << endl;
-
-    arquivo.open("matriz.txt");
-    if(!arquivo){
-        cout << "\nFALHA NA ABERTURA DO ARQUIVO" << endl;
-    }
-    else{
-        arquivo << TAM << "x" << TAM << endl;
-        while(quantidadeMatrizes>0){
-            GeraMatrizAleatorio(matriz);
-
-            for(int i=0; i<TAM; i++){
-                for(int j=0; j<TAM; j++){
-                    if(a<TAM){
-                        arquivo << matriz[i][j] << " ";
-                        a++;
-                        //se meu 'a' for menor que 3 significa que aunda nao preenchi toda linha da matriz
-                    }
-                    else{ //meu 'a' é 3, significa que tenho de ir para proxima linha entao devo pular uma linha inserir o primeiro elemento e aumentar meu 'a' novamente
-                        a = 0;
-                        arquivo << "\n";
-                        arquivo << matriz[i][j] << " ";
-                        a++;
-                    }
-                }
+    while(getline(arquivo, linha)){
+        bool ehLinhaVazia = true;
+        for(char c : linha){
+            if(!isspace(c)){
+                ehLinhaVazia = false;
+                break;
             }
-            arquivo << "\n";
-            quantidadeMatrizes--;
         }
-        
+        if(ehLinhaVazia){
+            contEspacos++;
+        }
     }
     arquivo.close();
+    return contEspacos;
+}
+
+
+
+/*int ContaQtdMatriz() {
+    ifstream arquivo("dataset/input.data");
+    int contador = 0;
+    string linha;
+    while (!arquivo.eof()) {
+        getline(arquivo, linha);
+        // Se a linha não estiver vazia, começamos uma nova matriz
+        if (!linha.empty()) {
+            contador++;
+            // Continuamos lendo o arquivo até o fim da matriz
+            while (getline(arquivo, linha) && !linha.empty()) {
+                // Não precisamos fazer nada aqui
+            }
+        }
+    }
+
+    arquivo.close();
+    return contador;
 }*/
+
+bool linhaVazia(const string& linha){
+    cout << "AAA" << endl;
+    for (char c : linha) {
+        if (!isspace(c)) {
+            // Se o caractere não for espaço em branco, a linha não está vazia
+            return false;
+        }
+    }
+    // Se todos os caracteres forem espaços em branco, a linha está vazia
+    return true;
+}
 
 void LerArquivo(int **matriz, int tam_matriz){
     ifstream arquivo;
     string linha_arq, elemento;
     int aux_linha=0, aux_coluna=0, aux_tam=0, linha=0, coluna=0;
-    //string **matriz_aux;
+
+    //alocação matriz de string
     string **matriz_aux=new string*[tam_matriz];
     for(int i = 0; i < tam_matriz; i++){
         matriz_aux[i]=new string[tam_matriz];
     }
     
-    arquivo.open("matriz.txt", ios::in);
+    arquivo.open("dataset/input.data", ios::in);
 
     while(!arquivo.eof()){
         while(getline(arquivo, linha_arq, '\n')){
@@ -121,7 +100,8 @@ void LerArquivo(int **matriz, int tam_matriz){
                 aux_tam++;
             }
             else{
-                if(linha_arq.empty()){
+                //linhavazia++;
+                if(linhaVazia(linha_arq)){
                     for(int i=0; i<tam_matriz; i++){
                         for(int j=0; j<tam_matriz; j++){
                             matriz[i][j] = atoi(matriz_aux[i][j].c_str());
@@ -130,13 +110,13 @@ void LerArquivo(int **matriz, int tam_matriz){
                     cout << "\n---Nova Matriz---" << endl;
                     ImprimirMatriz(matriz, tam_matriz);
                     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
-                    //memset(matriz_aux, 0, sizeof(matriz_aux));
-                    matriz[TAM][TAM] = {0};
+                    //matriz[tam_matriz][tam_matriz] = {0};
                     aux_coluna = 0;
                     aux_linha = 0;
                     soma = 0;
                     linha = 0;
                     coluna = 0;
+                    //linhavazia=0;
                 }
                 else{
                     //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
@@ -144,13 +124,18 @@ void LerArquivo(int **matriz, int tam_matriz){
 
                     //lendo a cada elemento presente na minha linha armazena para minha variavel elemento e tendo o delimitador ''
                     while(getline(aux, elemento, ' ')){
-                        matriz_aux[aux_linha][aux_coluna] = elemento;
-                        aux_coluna++;
+                        if(aux_coluna < tam_matriz && aux_linha < tam_matriz){
+                            matriz_aux[aux_linha][aux_coluna] = elemento;
+                            aux_coluna++;
+                        } 
                     }
 
-                    if(aux_coluna>0){
+                    if(aux_coluna > 0 && aux_linha < tam_matriz){
                         aux_linha++;
                         aux_coluna=0;
+                    }
+                    else{
+                        break; // sai do loop while para evitar acessar posições inválidas da matriz
                     }
                 }
             }    
@@ -168,8 +153,79 @@ void LerArquivo(int **matriz, int tam_matriz){
     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
 }
 
+/*void LerArquivo(int **matriz, int tam_matriz){
+    ifstream arquivo;
+    string linha_arq, elemento;
+    int aux_linha=0, aux_coluna=0, aux_tam=0, linha=0, coluna=0, linhavazia=0;
+    //alocação matriz de string
+    string **matriz_aux=new string*[tam_matriz];
+    for(int i = 0; i < tam_matriz; i++){
+        matriz_aux[i]=new string[tam_matriz];
+    }
+    
+    arquivo.open("dataset/input.data", ios::in);
+    while(!arquivo.eof()){
+        while(getline(arquivo, linha_arq, '\n')){
+            if(aux_tam==0){
+                aux_tam++;
+            }
+            else{
+                cout << "aa" << endl;
+                linhavazia++;
+                if(!linha_arq.empty()){
+                    //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
+                    stringstream aux(linha_arq);
+
+                    //lendo a cada elemento presente na minha linha armazena para minha variavel elemento e tendo o delimitador ''
+                    while(getline(aux, elemento, ' ')){
+                        if(aux_coluna < tam_matriz && aux_linha < tam_matriz){
+                            matriz_aux[aux_linha][aux_coluna] = elemento;
+                            aux_coluna++;
+                        } 
+                    }
+
+                    if(aux_coluna > 0 && aux_linha < tam_matriz){
+                        aux_linha++;
+                        aux_coluna=0;
+                    }
+                    else{
+                        break; // sai do loop while para evitar acessar posições inválidas da matriz
+                    }
+                }
+                else{
+                    for(int i=0; i<tam_matriz; i++){
+                        for(int j=0; j<tam_matriz; j++){
+                            matriz[i][j] = atoi(matriz_aux[i][j].c_str());
+                        }
+                    }
+                    cout << "\n---Nova Matriz---" << endl;
+                    ImprimirMatriz(matriz, tam_matriz);
+                    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
+                    matriz[tam_matriz][tam_matriz] = {0};
+                    aux_coluna = 0;
+                    aux_linha = 0;
+                    soma = 0;
+                    linha = 0;
+                    coluna = 0;
+                }
+            }    
+        }
+    }
+    arquivo.close();  
+
+    for(int i=0; i<tam_matriz; i++){
+        for(int j=0; j<tam_matriz; j++){
+            matriz[i][j] = atoi(matriz_aux[i][j].c_str());
+        }
+    }
+    cout << "\naa---Nova Matriz---" << endl;
+    ImprimirMatriz(matriz, tam_matriz);
+    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
+}*/
+
 void ImprimirMatriz(int **matriz, int tam_matriz){
     cout << endl;
+    cout << tam_matriz << endl;
     for (int i=0; i<tam_matriz; i++) {
         for (int j=0; j<tam_matriz; j++) {
             cout << matriz[i][j] << " ";

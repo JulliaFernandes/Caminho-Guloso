@@ -1,5 +1,5 @@
-#ifndef MATRIZ_HPP__
-#define MATRIZ_HPP__
+#ifndef MATRIZ_HPP
+#define MATRIZ_HPP
 
 #include<iostream>
 #include<fstream>
@@ -9,21 +9,12 @@
 #include<ctime>
 #include<cstdlib>
 #include<unistd.h>
-#define TAM 4
+#include<string>
 
 using namespace std;
 
-class TamanhoMatriz{
-    private:
-        int tam_max;
-    public:
-        void setTam_max(int tam_max);
-        int getTam_max();
-};
-
-//void GeraMatrizAleatorio(int matriz[TAM][TAM]);
-//void ColocandoMatriz();
 int LePrimeraLinha();
+bool linhaVazia(const string& linha);
 int ContaQtdMatriz();
 void LerArquivo(int **matriz, int tam_matriz);
 void ImprimirMatriz(int **matriz, int tam_matriz);
