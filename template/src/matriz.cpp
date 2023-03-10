@@ -47,30 +47,7 @@ int ContaQtdMatriz(){
     return contEspacos;
 }
 
-
-
-/*int ContaQtdMatriz() {
-    ifstream arquivo("dataset/input.data");
-    int contador = 0;
-    string linha;
-    while (!arquivo.eof()) {
-        getline(arquivo, linha);
-        // Se a linha não estiver vazia, começamos uma nova matriz
-        if (!linha.empty()) {
-            contador++;
-            // Continuamos lendo o arquivo até o fim da matriz
-            while (getline(arquivo, linha) && !linha.empty()) {
-                // Não precisamos fazer nada aqui
-            }
-        }
-    }
-
-    arquivo.close();
-    return contador;
-}*/
-
 bool linhaVazia(const string& linha){
-    cout << "AAA" << endl;
     for (char c : linha) {
         if (!isspace(c)) {
             // Se o caractere não for espaço em branco, a linha não está vazia
@@ -100,7 +77,6 @@ void LerArquivo(int **matriz, int tam_matriz){
                 aux_tam++;
             }
             else{
-                //linhavazia++;
                 if(linhaVazia(linha_arq)){
                     for(int i=0; i<tam_matriz; i++){
                         for(int j=0; j<tam_matriz; j++){
@@ -110,13 +86,11 @@ void LerArquivo(int **matriz, int tam_matriz){
                     cout << "\n---Nova Matriz---" << endl;
                     ImprimirMatriz(matriz, tam_matriz);
                     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
-                    //matriz[tam_matriz][tam_matriz] = {0};
                     aux_coluna = 0;
                     aux_linha = 0;
                     soma = 0;
                     linha = 0;
                     coluna = 0;
-                    //linhavazia=0;
                 }
                 else{
                     //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
@@ -133,9 +107,6 @@ void LerArquivo(int **matriz, int tam_matriz){
                     if(aux_coluna > 0 && aux_linha < tam_matriz){
                         aux_linha++;
                         aux_coluna=0;
-                    }
-                    else{
-                        break; // sai do loop while para evitar acessar posições inválidas da matriz
                     }
                 }
             }    
@@ -153,79 +124,8 @@ void LerArquivo(int **matriz, int tam_matriz){
     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
 }
 
-/*void LerArquivo(int **matriz, int tam_matriz){
-    ifstream arquivo;
-    string linha_arq, elemento;
-    int aux_linha=0, aux_coluna=0, aux_tam=0, linha=0, coluna=0, linhavazia=0;
-    //alocação matriz de string
-    string **matriz_aux=new string*[tam_matriz];
-    for(int i = 0; i < tam_matriz; i++){
-        matriz_aux[i]=new string[tam_matriz];
-    }
-    
-    arquivo.open("dataset/input.data", ios::in);
-    while(!arquivo.eof()){
-        while(getline(arquivo, linha_arq, '\n')){
-            if(aux_tam==0){
-                aux_tam++;
-            }
-            else{
-                cout << "aa" << endl;
-                linhavazia++;
-                if(!linha_arq.empty()){
-                    //está criando um fluxo de caracteres para que a função getline possa ler e manipular os dados
-                    stringstream aux(linha_arq);
-
-                    //lendo a cada elemento presente na minha linha armazena para minha variavel elemento e tendo o delimitador ''
-                    while(getline(aux, elemento, ' ')){
-                        if(aux_coluna < tam_matriz && aux_linha < tam_matriz){
-                            matriz_aux[aux_linha][aux_coluna] = elemento;
-                            aux_coluna++;
-                        } 
-                    }
-
-                    if(aux_coluna > 0 && aux_linha < tam_matriz){
-                        aux_linha++;
-                        aux_coluna=0;
-                    }
-                    else{
-                        break; // sai do loop while para evitar acessar posições inválidas da matriz
-                    }
-                }
-                else{
-                    for(int i=0; i<tam_matriz; i++){
-                        for(int j=0; j<tam_matriz; j++){
-                            matriz[i][j] = atoi(matriz_aux[i][j].c_str());
-                        }
-                    }
-                    cout << "\n---Nova Matriz---" << endl;
-                    ImprimirMatriz(matriz, tam_matriz);
-                    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
-                    matriz[tam_matriz][tam_matriz] = {0};
-                    aux_coluna = 0;
-                    aux_linha = 0;
-                    soma = 0;
-                    linha = 0;
-                    coluna = 0;
-                }
-            }    
-        }
-    }
-    arquivo.close();  
-
-    for(int i=0; i<tam_matriz; i++){
-        for(int j=0; j<tam_matriz; j++){
-            matriz[i][j] = atoi(matriz_aux[i][j].c_str());
-        }
-    }
-    cout << "\naa---Nova Matriz---" << endl;
-    ImprimirMatriz(matriz, tam_matriz);
-    PercorrerMatriz(matriz, linha, coluna, tam_matriz);
-}*/
-
 void ImprimirMatriz(int **matriz, int tam_matriz){
     cout << endl;
-    cout << tam_matriz << endl;
     for (int i=0; i<tam_matriz; i++) {
         for (int j=0; j<tam_matriz; j++) {
             cout << matriz[i][j] << " ";

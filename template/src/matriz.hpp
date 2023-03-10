@@ -14,8 +14,8 @@
 using namespace std;
 
 int LePrimeraLinha();
-bool linhaVazia(const string& linha);
 int ContaQtdMatriz();
+bool linhaVazia(const string& linha);
 void LerArquivo(int **matriz, int tam_matriz);
 void ImprimirMatriz(int **matriz, int tam_matriz);
 void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz);
