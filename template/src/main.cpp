@@ -8,8 +8,8 @@ int main(){
 
     tam_matriz = LePrimeraLinha();
     qtd_matriz = ContaQtdMatriz()+1;
-    cout << qtd_matriz << endl << endl;
-    cout << tam_matriz << endl;
+    cout << "Existe " << qtd_matriz << " matrize(s) no arquivo"<< endl << endl;
+    //cout << tam_matriz << endl;
     
     //alocaçao da matriz
     int** matriz=new int*[tam_matriz];
