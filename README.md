@@ -19,6 +19,7 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 <strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.
 O desenvolvimento da função 'LerArquivo' de maneira geral é feita de modo que é lido uma matriz por vez e ja é feita a chamada da função que ira realizar a soma e o caminho que sera percorrido, sendo feito isso ate o final do arquivo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
+<strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
 
 <strong>Explicação detalhada da função 'LerArquivo':</strong>
 <ul>
