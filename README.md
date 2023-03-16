@@ -20,6 +20,10 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 O desenvolvimento da função 'LerArquivo' de maneira geral é feita de modo que é lido uma matriz por vez e ja é feita a chamada da função que ira realizar a soma e o caminho que sera percorrido, sendo feito isso ate o final do arquivo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
+<strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s).
+<ul>
+  <li>Na primeira linha do arquivo é necessário ter o tamanho da matriz sendo implementado dessa maneira: '5 5' e a existencia de ao mínimo uma matriz do tamanho correspondente, para a boa execução do código</li>
+</ul>
 
 <strong>Explicação detalhada da função 'LerArquivo':</strong>
 <ul>
