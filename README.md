@@ -51,3 +51,6 @@ O desenvolvimento da função 'LerArquivo' de maneira geral é feita de modo que
 </ul>
 
 # Exemplificação do codigo:
+<p aling="center">
+<img src="imgs/MatrizEx.png">
+</p>
