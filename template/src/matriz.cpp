@@ -268,6 +268,7 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
             }
             else{
                 //printf("\nVOCE CHEGOU AO FINAL!!");
+                //soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
                 linha++;
                 coluna++;
