@@ -124,7 +124,7 @@ void LerArquivo(int **matriz, int tam_matriz){
         }
     }
     cout << "---------------------------------------------";
-    cout << "\n\taa---Nova Matriz---" << endl;
+    cout << "\n\t---Nova Matriz---" << endl;
     //ImprimirMatriz(matriz, tam_matriz);
     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
     ImprimirMatriz(matriz, tam_matriz);
