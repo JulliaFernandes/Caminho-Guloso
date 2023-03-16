@@ -9,7 +9,6 @@ int main(){
     tam_matriz = LePrimeraLinha();
     qtd_matriz = ContaQtdMatriz()+1;
     cout << "Existe " << qtd_matriz << " matriz(s) no arquivo"<< endl << endl;
-    //cout << tam_matriz << endl;
     
     //alocaçao da matriz
     int** matriz=new int*[tam_matriz];

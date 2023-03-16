@@ -85,7 +85,6 @@ void LerArquivo(int **matriz, int tam_matriz){
                     }
                     cout << "---------------------------------------------";
                     cout << "\n\t---Nova Matriz---" << endl;
-                    //ImprimirMatriz(matriz, tam_matriz);
                     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
                     ImprimirMatriz(matriz, tam_matriz);
                     cout << "VALOR DA SOMA: " << soma << endl;
@@ -125,7 +124,6 @@ void LerArquivo(int **matriz, int tam_matriz){
     }
     cout << "---------------------------------------------";
     cout << "\n\t---Nova Matriz---" << endl;
-    //ImprimirMatriz(matriz, tam_matriz);
     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
     ImprimirMatriz(matriz, tam_matriz);
     cout << "VALOR DA SOMA: " << soma << endl;
@@ -141,16 +139,12 @@ void ImprimirMatriz(int **matriz, int tam_matriz){
         }
         cout << endl;
     }
-    //cout << "VALOR DA SOMA: " << soma << endl;
-    //cout << "---------------------------------------------" << endl;
 }
 
 void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
     soma += matriz[linha][coluna];
 
     while(linha < tam_matriz && coluna < tam_matriz){
-        //cout << "\nLINHA: " << linha;
-        //cout << "\nCOLUNA: " << coluna << endl;
 
         if((linha == 0) && (coluna == 0)){
             //olho se é o que esta abaixo da posicao [0][0] é o maior e atualizo os passos
@@ -170,7 +164,6 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                 matriz[linha][coluna] = -1;
                 coluna++;
             }
-            //mprimirMatriz(matriz, tam_matriz);
         }
         else if(coluna > 0 && coluna < tam_matriz-1){ //olhando quando estou nao estou nas colunas das extremidades
             if(linha < tam_matriz-1 && linha != 0){ //olhando quando nao estou tmb nas linhas das extremidades, estou no meio
@@ -200,11 +193,9 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                     matriz[linha][coluna] = -1;
                     linha++;
                     coluna++;
-                    //cout << "\nfff" << endl;
                 }
             }
-            else if(linha == tam_matriz-1){ //estaria na ultima linha
-                //So posso ir pra frente
+            else if(linha == tam_matriz-1){ //estaria na ultima linha e so posso ir pra frente
                 soma += matriz[linha][coluna+1];
                 matriz[linha][coluna] = -1;
                 coluna++;
@@ -239,7 +230,6 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                 }
 
             }
-            //ImprimirMatriz(matriz, tam_matriz);
         }
         else if(coluna == 0 && linha < tam_matriz-1){ 
             if(matriz[linha][coluna+1] >= matriz[linha+1][coluna] && matriz[linha][coluna+1] >= matriz[linha+1][coluna+1]){ // andei para o lado direito
@@ -258,7 +248,6 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                 linha++;
                 coluna++;
             }
-            //ImprimirMatriz(matriz, tam_matriz);
         }
         else if(linha == tam_matriz-1){//estiver na ultima linha
             if(coluna == 0){ //so posso ir para a direita
@@ -266,14 +255,11 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                 matriz[linha][coluna]  = -1;
                 coluna++;
             }
-            else{
-                //printf("\nVOCE CHEGOU AO FINAL!!");
-                //soma += matriz[linha][coluna+1];
+            else{//chegou ao final
                 matriz[linha][coluna] = -1;
                 linha++;
                 coluna++;
             }
-            //ImprimirMatriz(matriz, tam_matriz);
         }
         else if(coluna == tam_matriz -1){
             if(linha != tam_matriz-1){
@@ -309,7 +295,6 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                     }
                 }
             }
-            //ImprimirMatriz(matriz, tam_matriz);
         }
     }
 }
