@@ -66,7 +66,10 @@ Possiveis caminhos a serem percorridos:
 </p>
 Esse processo se repete ate chegar ao fim da matriz.
 
-
+Terminal do usuario: 
+<p align="center">
+<img src="template/imgs/Terminal.png">
+</p>
 
 # Compilação e Execução
 
