@@ -16,8 +16,7 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 <strong>Programa feito na linguagem c++.</strong>
 
 <strong>Main.cpp:</strong> É chamada a 2 funções iniciais, a função 'LePrimeiraLinha' que ira retornar a variavel 'tam_matriz' o tamanho da matriz e a função 'ContaQtdMatriz' que sera retornada a quantidade de matrizes presente no arquivo .txt. É feita a alocação dinamica da matriz que sera usada durante todo o codigo utilizando 'tam_matriz' e por fim e feita a chamada da função 'LerArquivo' que nela sera realizado todas as instruçoes para o funcionamemento do codigo. <br>
-<strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.
-O desenvolvimento da função 'LerArquivo' de maneira geral é feita de modo que é lido uma matriz por vez e ja é feita a chamada da função que ira realizar a soma e o caminho que sera percorrido, sendo feito isso ate o final do arquivo.<br>
+<strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
 <strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s).
@@ -31,7 +30,6 @@ O desenvolvimento da função 'LerArquivo' de maneira geral é feita de modo que
   <li>É aberto o arquivo e dentro do loop while que vou percorrendo linha por linha tenho um if para que pule a primeria linha que é a que possui o tamanho da matriz.</li>
   <li>Enquanto nao chegamos a uma linha vazia no arquivo é feito a passagem da linha lida para a matriz de string.</li>
   <li>Se achado uma linha vazia é porque ja foi percorrida uma matriz inteira e desse modo posso transformar minha matriz de string para a matriz de inteiros, feito isso é chamada a funçao 'PercorrerMatriz' que é nela que ira ser feita a verificação de qual o maior caminho dentro de todas as regras que devem ser cumpridas e logo apos a de 'ImprimirMatriz' que ira mostrar a matriz formada e percorrida.</li>
-  <li>Na função 'PercorrerMatriz' o criterio de decisao para valores iguais é ir para baixo</li>
   <li>Apos tudo isso é zerado todas as variaveis que sao utilizadas, para que possa perorrer a proxima matriz de forma correta sem erros e segmentaion fault.</li>
   <li>Quando é lida a ultima matriz como nao ha uma linha vazia ao final, o arquivo é fechado e é chamado logo apos novamente as funçoes de imprimir e percorrer matriz e desse forma todas as matrizes sao lidas e percorridas.</li>
 </ul>
