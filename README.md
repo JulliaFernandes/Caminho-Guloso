@@ -19,7 +19,7 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 <strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
-<strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s).
+<strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s), sendo ela(s) de numeros inteiros somente.
 <ul>
   <li>Na primeira linha do arquivo é necessário ter o tamanho da matriz sendo implementado dessa maneira: '5 5' e a existencia de ao mínimo uma matriz do tamanho correspondente, para a boa execução do código</li>
 </ul>
@@ -30,7 +30,7 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
   <li>É aberto o arquivo e dentro do loop while que vou percorrendo linha por linha tenho um if para que pule a primeria linha que é a que possui o tamanho da matriz.</li>
   <li>Enquanto nao chegamos a uma linha vazia no arquivo é feito a passagem da linha lida para a matriz de string.</li>
   <li>Se achado uma linha vazia é porque ja foi percorrida uma matriz inteira e desse modo posso transformar minha matriz de string para a matriz de inteiros, feito isso é chamada a funçao 'PercorrerMatriz' que é nela que ira ser feita a verificação de qual o maior caminho dentro de todas as regras que devem ser cumpridas e logo apos a de 'ImprimirMatriz' que ira mostrar a matriz formada e percorrida.</li>
-  <li>Apos tudo isso é zerado todas as variaveis que sao utilizadas, para que possa perorrer a proxima matriz de forma correta sem erros e segmentaion fault.</li>
+  <li>Apos tudo isso é zerado todas as variaveis que sao utilizadas, para que possa perorrer a proxima matriz de forma correta sem erros e segmentation fault.</li>
   <li>Quando é lida a ultima matriz como nao ha uma linha vazia ao final, o arquivo é fechado e é chamado logo apos novamente as funçoes de imprimir e percorrer matriz e desse forma todas as matrizes sao lidas e percorridas.</li>
 </ul>
 
