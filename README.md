@@ -41,36 +41,60 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
    <li>Entramos em um loop while sendo a condição de funcionamento enquanto linha e coluna forem menores que o tamanho da matriz, pois assim nos percorremos toda a matriz</li>
    <li>Sao utlizadas 5 condiçoes para comparação de qual posiçao esta na matriz, sendo elas:</li>
       <ul>
-        <li>Se estivermos na linha e coluna [0,0]</li>
-        <li>Se estivermos na coluna maior que zero e menor que o tamanho da matriz </li>
-        <li>Se estivermos na coluna 0 mas linha diferente da ultima</li>
-        <li>Se estivermos na ultima linha</li>
-        <li>Se estivermos na ultima coluna</li>
+        <li>Se estivermos na linha e coluna [0,0](Verde)</li>
+        <li>Se estivermos na coluna maior que zero e menor que o tamanho da matriz(Azul)</li>
+        <li>Se estivermos na coluna 0 mas linha diferente da ultima(Roxo)</li>
+        <li>Se estivermos na ultima linha(Rosa)</li>
+        <li>Se estivermos na ultima coluna(Amarelo)</li>
     </ul>
+    <p align="center">
+      <img src="template/imgs/MatrizColorida (2).png">
+    </p>
    <li>Em cada uma dessas condiçoes ha as mais condições para a avaliação de qual o maior valor e qual direção deve ser tomada, respeitando os casos de extremidades da matriz e tendo como criterio quando encontrado valores igual a decisão de ir para baixo</li>
    <li>Em cada posição percorrida é trocado o valor para '-1'</li>
    <li>Sempre que tomado uma decisão é somado à variavel 'soma' o valor correspondente a aquela posição especifica</li>
 </ul>
 
 # Exemplificação do codigo:
-Matriz para fins explicativos:
 <p align="center">
-<img src="template/imgs/MatrizEx.png">
-</p>
-
-Possiveis caminhos a serem percorridos:
-<p align="center">
-<img src="template/imgs/MatrizEx.1.png">
+   <em><ins>Matriz para fins explicativos:</ins></em>
 </p>
 
 <p align="center">
-<img src="template/imgs/MatrizEx.2.png">
+  <img src="template/imgs/MatrizEx.png">
 </p>
-Esse processo se repete ate chegar ao fim da matriz.
 
-Terminal do usuario: 
 <p align="center">
-<img src="template/imgs/Terminal.png">
+   Possiveis caminhos a serem percorridos:
+</p>
+
+<p align="center">
+  <img src="template/imgs/MatrizEx.1.png">
+</p>
+
+<p align="center">
+  <img src="template/imgs/MatrizEx.2.png">
+</p>
+
+
+<p align="center">
+   Esse processo se repete ate chegar ao fim da matriz.<br><br>
+</p>
+
+<p align="center">
+   <em><ins>Entrada de dados no arquivo Matriz.txt:</ins></em>
+</p>
+
+<p align="center">
+  <img src="template/imgs/DadosEntrada.png">
+</p>
+
+<p align="center">
+   Terminal do usuario: 
+</p>
+
+<p align="center">
+  <img src="template/imgs/Terminal.1.png">
 </p>
 
 # Compilação e Execução
