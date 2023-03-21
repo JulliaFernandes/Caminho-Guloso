@@ -85,6 +85,7 @@ void LerArquivo(int **matriz, int tam_matriz){
                     }
                     cout << "---------------------------------------------";
                     cout << "\n\t---Nova Matriz---" << endl;
+                    ImprimirMatriz(matriz, tam_matriz);
                     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
                     ImprimirMatriz(matriz, tam_matriz);
                     cout << "VALOR DA SOMA: " << soma << endl;
@@ -124,6 +125,7 @@ void LerArquivo(int **matriz, int tam_matriz){
     }
     cout << "---------------------------------------------";
     cout << "\n\t---Nova Matriz---" << endl;
+    ImprimirMatriz(matriz, tam_matriz);
     PercorrerMatriz(matriz, linha, coluna, tam_matriz);
     ImprimirMatriz(matriz, tam_matriz);
     cout << "VALOR DA SOMA: " << soma << endl;
