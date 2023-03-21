@@ -52,7 +52,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
         <li>Se estivermos na ultima coluna(Amarelo)</li>
     </ul>
     <p align="center">
-      <img src="template/imgs/MatrizColorida (2).png">
+      <img src="/imgs/MatrizColorida (2).png">
     </p>
    <li>Em cada uma dessas condiçoes ha as mais condições para a avaliação de qual o maior valor e qual direção deve ser tomada, respeitando os casos de extremidades da matriz e tendo como criterio quando encontrado valores igual a decisão de ir para baixo</li>
    <li>Em cada posição percorrida é trocado o valor para '-1'</li>
@@ -65,7 +65,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 </p>
 
 <p align="center">
-  <img src="template/imgs/MatrizEx.png">
+  <img src="/imgs/MatrizEx.png">
 </p>
 
 <p align="center">
@@ -73,11 +73,11 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 </p>
 
 <p align="center">
-  <img src="template/imgs/MatrizEx.1.png">
+  <img src="/imgs/MatrizEx.1.png">
 </p>
 
 <p align="center">
-  <img src="template/imgs/MatrizEx.2.png">
+  <img src="/imgs/MatrizEx.2.png">
 </p>
 
 
@@ -94,7 +94,7 @@ Em uma matriz [7,7] dada como exemplo se espera que esses resultados sejam obtid
 </p>
 
 <p align="center">
-  <img src="template/imgs/DadosEntrada.png">
+  <img src="/imgs/DadosEntrada.png">
 </p>
 
 <p align="center">
@@ -102,7 +102,7 @@ Em uma matriz [7,7] dada como exemplo se espera que esses resultados sejam obtid
 </p>
 
 <p align="center">
-  <img src="template/imgs/Terminal.1.png">
+  <img src="/imgs/Terminal.1.png">
 </p>
 
 # Compilação e Execução
