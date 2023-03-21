@@ -11,6 +11,10 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 5 - Para caminhar você deve sempre optar pelo valor da próxima casa, valor esse que deve ser o maior dentre eles. Caso haja empate entre casas, crie uma regra para adotar sempre uma mesma decisão de caminhamento.<br>
 6 - Ao alcançar a última linha e coluna da matriz, selecione a próxima matriz e repita todo o processo novamente. Por fim, apresente ao usuário qual foi o caminho adotado e qual a soma obtida do caminho realizado.<br>
 
+# Explicação do Problema
+
+Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição dada e percorrer ate o final escolhendo a cada iteração o de maior valor presente em seu entorno e logo apos se tornando assim a nova posição atual, esse é um tipo de algorito que não olha para as posições passadas e nem olha as consequencias que teram para a execução.
+
 # Resolução do Problema
 
 <strong>Programa feito na linguagem c++.</strong>
@@ -81,6 +85,10 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
    Esse processo se repete ate chegar ao fim da matriz.<br><br>
 </p>
 
+
+# Resultados Esperados
+Em uma matriz [7,7] dada como exemplo se espera que esses resultados sejam obtidos
+
 <p align="center">
    <em><ins>Entrada de dados no arquivo Matriz.txt:</ins></em>
 </p>
@@ -99,7 +107,9 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 
 # Compilação e Execução
 
-O codigo disponibilizado possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
+O codigo disponibilizado foi criado e executado em notebook Acer core i5 Aspire M com sistema operacional Windowns 10 e utlizado um terminal de comando com WSL.
+
+O codigo possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
 
 
 | Comando                |  Função                                                                                           |                     
