@@ -13,7 +13,7 @@ Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura d
 
 # Explicação do Problema
 
-Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição dada e percorrer ate o final escolhendo a cada iteração o de maior valor presente em seu entorno e logo apos se tornando assim a nova posição atual, esse é um tipo de algorito que não olha para as posições passadas e nem olha as consequencias que teram para a execução.
+Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição dada e percorrer ate o final escolhendo a cada iteração o de maior valor presente em seu entorno e logo apos se tornando assim a nova posição atual, esse é um tipo de algoritmo que não olha para as posições passadas e nem olha as consequencias que teram para a execução.
 
 # Resolução do Problema
 
