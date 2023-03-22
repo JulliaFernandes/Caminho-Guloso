@@ -1,5 +1,5 @@
 # Caminho-Guloso
-
+<img align="center" height="20px" width="60px" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"/> </br>
 Atividade realizada no 3º periodo para a disciplina de Algoritmos e Estrutura de Dados.
 
 <strong>Instruções para a realização da atividade:</strong>
@@ -23,7 +23,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 <strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
-<strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s), sendo ela(s) de numeros inteiros somente.
+<strong>dataset/input.data:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s), sendo ela(s) de numeros inteiros somente.
 <ul>
   <li>Na primeira linha do arquivo é necessário ter o tamanho da matriz sendo implementado dessa maneira: '5 5' e a existencia de ao mínimo uma matriz de inteiros do tamanho correspondente, para a boa execução do código</li>
 </ul>
