@@ -25,7 +25,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
 <strong>Matriz.txt:</strong> Arquivo contendo o tamanho da matriz e a(s) matriz(s), sendo ela(s) de numeros inteiros somente.
 <ul>
-  <li>Na primeira linha do arquivo é necessário ter o tamanho da matriz sendo implementado dessa maneira: '5 5' e a existencia de ao mínimo uma matriz do tamanho correspondente, para a boa execução do código</li>
+  <li>Na primeira linha do arquivo é necessário ter o tamanho da matriz sendo implementado dessa maneira: '5 5' e a existencia de ao mínimo uma matriz de inteiros do tamanho correspondente, para a boa execução do código</li>
 </ul>
 
 <strong>Explicação detalhada da função 'LerArquivo':</strong>
@@ -87,7 +87,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 
 
 # Resultados Esperados
-Em uma matriz [7,7] dada como exemplo se espera que esses resultados sejam obtidos
+Em uma matriz [7,7], para fins de teste, essas matrizes foram feitas e executadas e esse é o resultado esperado do codigo.
 
 <p align="center">
    <em><ins>Entrada de dados no arquivo Matriz.txt:</ins></em>
