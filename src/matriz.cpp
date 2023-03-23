@@ -284,22 +284,11 @@ void PercorrerMatriz(int **matriz, int linha, int coluna, int tam_matriz){
                         matriz[linha][coluna] = -1;
                         coluna--;
                     }
-                    /*else if(matriz[linha+1][coluna-1] >= matriz[linha+1][coluna] && matriz[linha+1][coluna-1] >= matriz[linha][coluna-1]){ //estaria indo para a diagonal posterior(para a esquerda)
-                        soma += matriz[linha+1][coluna-1];
-                        matriz[linha][coluna] = -1;
-                        linha++;
-                        coluna--;
-                    }*/
                     else if(matriz[linha+1][coluna] >= matriz[linha+1][coluna-1] && matriz[linha+1][coluna] >= matriz[linha][coluna-1] && matriz[linha+1][coluna] >= matriz[linha+1][coluna-1]){ //estaria indo para baixo
                         soma += matriz[linha+1][coluna];
                         matriz[linha][coluna] = -1;
                         linha++;
                     }
-                    /*else{ //andarei para baixo
-                        soma += matriz[linha+1][coluna];
-                        matriz[linha][coluna] = -1;
-                        linha++;
-                    }*/
                     else{ //estaria indo para a diagonal posterior(para a esquerda)
                         soma += matriz[linha+1][coluna-1];
                         matriz[linha][coluna] = -1;
