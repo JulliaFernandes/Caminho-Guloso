@@ -19,7 +19,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 
 <strong>Programa feito na linguagem c++.</strong>
 
-<strong>Main.cpp:</strong> É chamada a 2 funções iniciais, a função 'LePrimeiraLinha' que ira retornar a variavel 'tam_matriz' o tamanho da matriz e a função 'ContaQtdMatriz' que sera retornada a quantidade de matrizes presente no arquivo .txt. É feita a alocação dinamica da matriz que sera usada durante todo o codigo utilizando 'tam_matriz' e por fim e feita a chamada da função 'LerArquivo' que nela sera realizado todas as instruçoes para o funcionamemento do codigo. <br>
+<strong>Main.cpp:</strong> É chamada a 2 funções iniciais, a função 'LePrimeiraLinha' que ira retornar a variavel 'tam_matriz' o tamanho da matriz e a função 'ContaQtdMatriz' que sera retornada a quantidade de matrizes presente no arquivo input.data. É feita a alocação dinamica da matriz que sera usada durante todo o codigo utilizando 'tam_matriz' e por fim e feita a chamada da função 'LerArquivo' que nela sera realizado todas as instruçoes para o funcionamemento do codigo. <br>
 <strong>Matriz.hpp:</strong> É onde é criada todas as funções que sera utlizadas durante o codigo.<br>
 <strong>Matriz.cpp:</strong> Chamada das funções criadas e onde é feito todo o codigo e seu desenvolvimento.<br>
 <strong>Terminal:</strong> Aparece ao usuario as matrizes ja percorridas com o valor da soma individual de cada matriz e o valor da soma de todas as matrizes.<br>
@@ -90,7 +90,7 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
 Em uma matriz [7,7], para fins de teste, essas matrizes foram feitas e executadas e esse é o resultado esperado do codigo.
 
 <p align="center">
-   <em><ins>Entrada de dados no arquivo Matriz.txt:</ins></em>
+   <em><ins>Entrada de dados no arquivo input.data:</ins></em>
 </p>
 
 <p align="center">
