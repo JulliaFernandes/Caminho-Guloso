@@ -102,7 +102,7 @@ Em uma matriz [7,7], para fins de teste, essas matrizes foram feitas e executada
 </p>
 
 <p align="center">
-  <img src="/imgs/Terminal.1.png">
+  <img src="/imgs/Terminal.png">
 </p>
 
 # Compilação e Execução
