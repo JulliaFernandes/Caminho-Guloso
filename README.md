@@ -45,11 +45,11 @@ Um algoritmo de caminho guloso tem como objetivo partir de uma certa posição d
    <li>Entramos em um loop while sendo a condição de funcionamento enquanto linha e coluna forem menores que o tamanho da matriz, pois assim nos percorremos toda a matriz</li>
    <li>Sao utlizadas 5 condiçoes para comparação de qual posiçao esta na matriz, sendo elas:</li>
       <ul>
-        <li>Se estivermos na linha e coluna [0,0](Verde)</li>
-        <li>Se estivermos na coluna maior que zero e menor que o tamanho da matriz(Azul)</li>
-        <li>Se estivermos na coluna 0 mas linha diferente da ultima(Roxo)</li>
-        <li>Se estivermos na ultima linha(Rosa)</li>
-        <li>Se estivermos na ultima coluna(Amarelo)</li>
+        <li>Se estivermos na linha e coluna [0,0](Verde)(Linha 151)</li>
+        <li>Se estivermos na coluna maior que zero e menor que o tamanho da matriz(Azul)(Linha 170)</li>
+        <li>Se estivermos na coluna 0 mas linha diferente da ultima(Roxo)(Linha 236)</li>
+        <li>Se estivermos na ultima linha(Rosa)(Linha 254)</li>
+        <li>Se estivermos na ultima coluna(Amarelo)(Linha 266)</li>
     </ul>
     <p align="center">
       <img src="/imgs/MatrizColorida (2).png">
